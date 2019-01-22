@@ -1,0 +1,27 @@
+<h2>post create component</h2>
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+      <mat-form-field>
+          <input matInput type="text" name="title" ngModel required minlength="5" #title="ngModel" placeholder="Post title">
+          <mat-error *ngIf="title.invalid">please enter a title</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput name="content" rows="4" ngModel required minlength="10" #content="ngModel" placeholder="Post Content"></textarea> <!-- two way binding -->
+          <mat-error *ngIf="content.invalid">please, write conetent</mat-error>
+        </mat-form-field>
+        <button
+        mat-raised-button
+        color="primary"
+        type="submit" [innerText]="postButtonText"></button>
+  </form>
+</mat-card>
+
+
+
+<!-- local reference
+
+<textarea matInput rows="6" #postInput></textarea>
+<button (click)="onAddPostBinding(postInput)" [innerText]="postButtonText"></button>
+<p>{{ newPost }}</p>
+
+-->
