@@ -2,11 +2,15 @@
 <mat-card>
   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
       <mat-form-field>
-          <input matInput type="text" name="title" ngModel required minlength="5" #title="ngModel" placeholder="Post title">
+          <input matInput type="text" name="title" [ngModel]="post?.title" required minlength="5" #title="ngModel" placeholder="Post title">
           <mat-error *ngIf="title.invalid">please enter a title</mat-error>
         </mat-form-field>
+        <div>
+          <button mat-stroked-button type="button" (click)="filePicher.click()"></button>
+          <input type="file" #filePicker>
+        </div>
         <mat-form-field>
-          <textarea matInput name="content" rows="4" ngModel required minlength="10" #content="ngModel" placeholder="Post Content"></textarea> <!-- two way binding -->
+          <textarea matInput name="content" rows="4" [ngModel]="post?.content" required minlength="10" #content="ngModel" placeholder="Post Content"></textarea> <!-- two way binding -->
           <mat-error *ngIf="content.invalid">please, write conetent</mat-error>
         </mat-form-field>
         <button
